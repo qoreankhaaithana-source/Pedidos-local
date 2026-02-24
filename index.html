@@ -7,7 +7,7 @@
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff; }
   .header { background:#fff; padding:10px; position:sticky; top:0; z-index:10; display:flex; flex-direction:column; align-items:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-  .header h1 { color:#8B4513; font-weight:bold; margin:0; font-size:1.8rem; }
+  .header h1 { color:#8B4513; font-weight:bold; margin:0; font-size:1.8rem; text-align:center;}
   .secciones { margin-top:10px; display:flex; gap:5px; flex-wrap:wrap; justify-content:center; }
   .secciones button, #btnCarrito { background:orange; color:#fff; border:none; padding:6px 10px; border-radius:5px; font-weight:bold; cursor:pointer; text-transform:uppercase;}
   #btnCarrito { background:#32CD32; margin-bottom:5px; }
@@ -23,7 +23,7 @@
 <body>
 
 <div class="header">
-  <h1>🔥 The Monster Burger & Grill 🔥</h1>
+  <h1>🔥The Monster Burger & Grill🔥</h1>
   <button id="btnCarrito" onclick="toggleCarrito()">Carrito</button>
   <div class="secciones">
     <button onclick="scrollToSection('Burgers')">BURGERS</button>
@@ -38,116 +38,23 @@
 
 <!-- BURGERS -->
 <h2 id="Burgers">BURGERS 🍔</h2>
+<div id="menuBurgers"></div>
 
-<div class="card">
-  <div class="card-top"><span>Burger clásica – S/10</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger clásica')">-</button>
-      <span id="cant-Burger clásica">0</span>
-      <button onclick="agregar('Burger clásica',10)">+</button>
-      <button onclick="eliminar('Burger clásica')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger clásica" class="input-obs" id="obs-Burger clásica">
-</div>
+<!-- SALCHIS -->
+<h2 id="Salchis">SALCHIS 🍟</h2>
+<div id="menuSalchis"></div>
 
-<div class="card">
-  <div class="card-top"><span>Burger cheese – S/13</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger cheese')">-</button>
-      <span id="cant-Burger cheese">0</span>
-      <button onclick="agregar('Burger cheese',13)">+</button>
-      <button onclick="eliminar('Burger cheese')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger cheese" class="input-obs" id="obs-Burger cheese">
-</div>
+<!-- BROASTERS -->
+<h2 id="Broasters">BROASTERS 🍗</h2>
+<div id="menuBroasters"></div>
 
-<div class="card">
-  <div class="card-top"><span>Burger royal – S/13</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger royal')">-</button>
-      <span id="cant-Burger royal">0</span>
-      <button onclick="agregar('Burger royal',13)">+</button>
-      <button onclick="eliminar('Burger royal')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger royal" class="input-obs" id="obs-Burger royal">
-</div>
+<!-- ALITAS -->
+<h2 id="Alitas">ALITAS 🍗</h2>
+<div id="menuAlitas"></div>
 
-<div class="card">
-  <div class="card-top"><span>Burger chicken – S/14</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger chicken')">-</button>
-      <span id="cant-Burger chicken">0</span>
-      <button onclick="agregar('Burger chicken',14)">+</button>
-      <button onclick="eliminar('Burger chicken')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger chicken" class="input-obs" id="obs-Burger chicken">
-</div>
-
-<div class="card">
-  <div class="card-top"><span>Burger hawaiana – S/14</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger hawaiana')">-</button>
-      <span id="cant-Burger hawaiana">0</span>
-      <button onclick="agregar('Burger hawaiana',14)">+</button>
-      <button onclick="eliminar('Burger hawaiana')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger hawaiana" class="input-obs" id="obs-Burger hawaiana">
-</div>
-
-<div class="card">
-  <div class="card-top"><span>Burger a los misio – S/15</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger a los misio')">-</button>
-      <span id="cant-Burger a los misio">0</span>
-      <button onclick="agregar('Burger a los misio',15)">+</button>
-      <button onclick="eliminar('Burger a los misio')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger a los misio" class="input-obs" id="obs-Burger a los misio">
-</div>
-
-<div class="card">
-  <div class="card-top"><span>Burger baconator – S/16</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger baconator')">-</button>
-      <span id="cant-Burger baconator">0</span>
-      <button onclick="agregar('Burger baconator',16)">+</button>
-      <button onclick="eliminar('Burger baconator')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger baconator" class="input-obs" id="obs-Burger baconator">
-</div>
-
-<div class="card">
-  <div class="card-top"><span>Two Burger – S/17</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Two Burger')">-</button>
-      <span id="cant-Two Burger">0</span>
-      <button onclick="agregar('Two Burger',17)">+</button>
-      <button onclick="eliminar('Two Burger')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Two Burger" class="input-obs" id="obs-Two Burger">
-</div>
-
-<div class="card">
-  <div class="card-top"><span>Burger Monster – S/20</span>
-    <div class="card-buttons">
-      <button onclick="restarMenu('Burger Monster')">-</button>
-      <span id="cant-Burger Monster">0</span>
-      <button onclick="agregar('Burger Monster',20)">+</button>
-      <button onclick="eliminar('Burger Monster')">🗑</button>
-    </div>
-  </div>
-  <input type="text" placeholder="Observaciones para Burger Monster" class="input-obs" id="obs-Burger Monster">
-</div>
-
-<!-- El resto de secciones (Salchis, Broasters, Alitas, A la Plancha) seguirían exactamente el mismo patrón -->
+<!-- A LA PLANCHA -->
+<h2 id="AlaPlancha">A LA PLANCHA 🥩</h2>
+<div id="menuAlaPlancha"></div>
 
 </div>
 
@@ -167,12 +74,89 @@
 <script>
 let carrito = [];
 
-function agregar(nombre, precio){
+// Definir toda la carta en arrays
+const carta = {
+  Burgers:[
+    {nombre:"Burger clásica",precio:10},
+    {nombre:"Burger cheese",precio:13},
+    {nombre:"Burger royal",precio:13},
+    {nombre:"Burger chicken",precio:14},
+    {nombre:"Burger hawaiana",precio:14},
+    {nombre:"Burger a los misio",precio:15},
+    {nombre:"Burger baconator",precio:16},
+    {nombre:"Two Burger",precio:17},
+    {nombre:"Burger Monster",precio:20}
+  ],
+  Salchis:[
+    {nombre:"Salchi clásica",precio:10},
+    {nombre:"Choripapa",precio:12},
+    {nombre:"Salchi Royal",precio:14},
+    {nombre:"Salchipollo",precio:15},
+    {nombre:"Salchi nuggets",precio:15},
+    {nombre:"Salchi a lo misio",precio:16},
+    {nombre:"Salchi Monster",precio:18}
+  ],
+  Broasters:[
+    {nombre:"Alita",precio:11},
+    {nombre:"Pierna",precio:12},
+    {nombre:"Encuentro",precio:12},
+    {nombre:"Pecho",precio:14},
+    {nombre:"Chicharrón de pollo",precio:13},
+    {nombre:"Pierna completa",precio:18},
+    {nombre:"Pecho completo",precio:20}
+  ],
+  Alitas:[
+    {nombre:"BBQ x4",precio:12},
+    {nombre:"BBQ x6",precio:18},
+    {nombre:"Acevichadas x4",precio:12},
+    {nombre:"Acevichadas x6",precio:18},
+    {nombre:"Búfalo x4",precio:12},
+    {nombre:"Búfalo x6",precio:18},
+    {nombre:"Piña x4",precio:12},
+    {nombre:"Piña x6",precio:18},
+    {nombre:"Maracuya x4",precio:12},
+    {nombre:"Maracuya x6",precio:18}
+  ],
+  AlaPlancha:[
+    {nombre:"Churrasco",precio:18},
+    {nombre:"Chuleta",precio:18},
+    {nombre:"Alita a la plancha",precio:11},
+    {nombre:"Pierna a la plancha",precio:12},
+    {nombre:"Encuentro a la plancha",precio:12},
+    {nombre:"Pecho a la plancha",precio:14},
+    {nombre:"Pierna completa a la plancha",precio:18},
+    {nombre:"Pecho completo a la plancha",precio:20}
+  ]
+};
+
+// Función para crear cards dinámicamente
+function generarMenu(){
+  for(const seccion in carta){
+    const contenedor = document.getElementById("menu"+seccion);
+    carta[seccion].forEach(item=>{
+      const div = document.createElement("div");
+      div.className="card";
+      div.innerHTML=`<div class="card-top"><span>${item.nombre} – S/${item.precio}</span>
+      <div class="card-buttons">
+        <button onclick="restarMenu('${item.nombre}')">-</button>
+        <span id="cant-${item.nombre}">0</span>
+        <button onclick="agregar('${item.nombre}',${item.precio})">+</button>
+        <button onclick="eliminar('${item.nombre}')">🗑</button>
+      </div></div>
+      <input type="text" placeholder="Observaciones para ${item.nombre}" class="input-obs" id="obs-${item.nombre}">`;
+      contenedor.appendChild(div);
+    });
+  }
+}
+
+// Funciones carrito
+function agregar(nombre,precio){
   let item = carrito.find(i=>i.nombre===nombre);
+  let obsInput = document.getElementById('obs-'+nombre);
   if(item){
     item.cantidad++;
   } else {
-    carrito.push({nombre:nombre,cantidad:1,precio:precio,observaciones:''});
+    carrito.push({nombre,nombre, cantidad:1, precio, observaciones: obsInput?obsInput.value:''});
   }
   actualizarCantidad(nombre);
   actualizarCarrito();
@@ -180,11 +164,9 @@ function agregar(nombre, precio){
 
 function restarMenu(nombre){
   let item = carrito.find(i=>i.nombre===nombre);
-  if(item && item.cantidad>0){
+  if(item){
     item.cantidad--;
-    if(item.cantidad===0){
-      carrito = carrito.filter(i=>i.nombre!==nombre);
-    }
+    if(item.cantidad<=0) carrito = carrito.filter(i=>i.nombre!==nombre);
     actualizarCantidad(nombre);
     actualizarCarrito();
   }
@@ -197,12 +179,11 @@ function eliminar(nombre){
 }
 
 function actualizarCantidad(nombre){
-  let item = carrito.find(i=>i.nombre===nombre);
   let span = document.getElementById('cant-'+nombre);
+  let item = carrito.find(i=>i.nombre===nombre);
   if(span) span.innerText = item?item.cantidad:0;
-  // actualizar observaciones
-  let obs = document.getElementById('obs-'+nombre);
-  if(item && obs) item.observaciones = obs.value;
+  let obsInput = document.getElementById('obs-'+nombre);
+  if(item && obsInput) item.observaciones = obsInput.value;
 }
 
 function actualizarCarrito(){
@@ -237,22 +218,25 @@ function scrollToSection(id){
 }
 
 function enviarPedidoWhatsApp(){
-  let mensaje="📋 *Pedido The Monster Burger*\n\n";
   if(carrito.length===0){ alert("El carrito está vacío"); return;}
+  let mensaje = "📋 *Pedido The Monster Burger*\n\n";
   carrito.forEach(item=>{
     if(item.cantidad>0){
       mensaje+=`• ${item.nombre} x${item.cantidad}`;
-      if(item.observaciones) mensaje+=` (Obs: ${item.observaciones})`;
+      if(item.observaciones && item.observaciones.trim()!=="") mensaje+=` (Obs: ${item.observaciones})`;
       mensaje+='\n';
     }
   });
   let modalidad = document.getElementById('modalidad').value;
   mensaje+=`\nModalidad: ${modalidad}\n`;
   mensaje+="\nGracias por elegirnos! 🍔🔥";
-  let numero = "+51998391223";
-  let url=`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  const numero = "+51998391223";
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url,'_blank');
 }
+
+// Generar menú al cargar
+window.onload = generarMenu;
 </script>
 
 </body>
