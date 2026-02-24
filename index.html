@@ -7,12 +7,13 @@
 <style>
 body{font-family:Arial,sans-serif;margin:0;background:#f4f4f6}
 .container{max-width:420px;margin:auto;padding:15px}
-h2{text-align:center;margin-bottom:15px}
-.card{background:#fff;padding:15px;border-radius:15px;margin-bottom:15px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
-button{width:100%;padding:12px;border:none;border-radius:12px;margin-top:8px;font-weight:bold;cursor:pointer}
-.btn-add{background:#eee}
-.btn-yape{background:linear-gradient(135deg,#7B2CBF,#9D4EDD);color:#fff}
-.total{font-size:18px;font-weight:bold;margin-top:10px}
+h2{text-align:center;margin-bottom:10px}
+.nav-sections{text-align:center;margin-bottom:15px}
+.nav-sections button{margin:2px;padding:6px 12px;border:none;border-radius:10px;background:#7B2CBF;color:white;font-weight:bold;cursor:pointer;font-size:14px}
+.card{background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+button.add{background:#eee;padding:6px 10px;font-size:14px;margin-top:5px;border-radius:10px;cursor:pointer;width:auto}
+button.btn-yape{width:100%;padding:12px;background:#2ecc71;color:#fff;border:none;border-radius:12px;font-weight:bold;margin-top:10px;cursor:pointer}
+.total{font-size:16px;font-weight:bold;margin-top:8px}
 input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 .section-title{font-weight:bold;font-size:16px;margin-bottom:5px;margin-top:10px}
 </style>
@@ -21,52 +22,56 @@ input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 <div class="container">
 <h2>Haz tu pedido</h2>
 
+<!-- Navegación rápida -->
+<div class="nav-sections">
+<button onclick="document.getElementById('burgers').scrollIntoView({behavior:'smooth'})">Burgers</button>
+<button onclick="document.getElementById('salchis').scrollIntoView({behavior:'smooth'})">Salchis</button>
+<button onclick="document.getElementById('broasters').scrollIntoView({behavior:'smooth'})">Broasters</button>
+</div>
+
 <!-- Burgers -->
-<div class="section-title">🍔 Burgers</div>
-<div class="card"><b>Burger clásica</b><br>S/10 <button class="btn-add" onclick="agregar('Burger clásica',10)">Agregar</button></div>
-<div class="card"><b>Burger cheese</b><br>S/13 <button class="btn-add" onclick="agregar('Burger cheese',13)">Agregar</button></div>
-<div class="card"><b>Burger royal</b><br>S/13 <button class="btn-add" onclick="agregar('Burger royal',13)">Agregar</button></div>
-<div class="card"><b>Burger chicken</b><br>S/14 <button class="btn-add" onclick="agregar('Burger chicken',14)">Agregar</button></div>
-<div class="card"><b>Burger hawaiana</b><br>S/14 <button class="btn-add" onclick="agregar('Burger hawaiana',14)">Agregar</button></div>
-<div class="card"><b>Burger a los misio</b><br>S/15 <button class="btn-add" onclick="agregar('Burger a los misio',15)">Agregar</button></div>
-<div class="card"><b>Burger baconator</b><br>S/16 <button class="btn-add" onclick="agregar('Burger baconator',16)">Agregar</button></div>
-<div class="card"><b>Two Burger</b><br>S/17 <button class="btn-add" onclick="agregar('Two Burger',17)">Agregar</button></div>
-<div class="card"><b>Burger Monster</b><br>S/20 <button class="btn-add" onclick="agregar('Burger Monster',20)">Agregar</button></div>
+<div id="burgers" class="section-title">🍔 Burgers</div>
+<div class="card"><b>Burger clásica</b> S/10 <button class="add" onclick="agregar('Burger clásica',10)">Agregar</button></div>
+<div class="card"><b>Burger cheese</b> S/13 <button class="add" onclick="agregar('Burger cheese',13)">Agregar</button></div>
+<div class="card"><b>Burger royal</b> S/13 <button class="add" onclick="agregar('Burger royal',13)">Agregar</button></div>
+<div class="card"><b>Burger chicken</b> S/14 <button class="add" onclick="agregar('Burger chicken',14)">Agregar</button></div>
+<div class="card"><b>Burger hawaiana</b> S/14 <button class="add" onclick="agregar('Burger hawaiana',14)">Agregar</button></div>
+<div class="card"><b>Burger a los misio</b> S/15 <button class="add" onclick="agregar('Burger a los misio',15)">Agregar</button></div>
+<div class="card"><b>Burger baconator</b> S/16 <button class="add" onclick="agregar('Burger baconator',16)">Agregar</button></div>
+<div class="card"><b>Two Burger</b> S/17 <button class="add" onclick="agregar('Two Burger',17)">Agregar</button></div>
+<div class="card"><b>Burger Monster</b> S/20 <button class="add" onclick="agregar('Burger Monster',20)">Agregar</button></div>
 
 <!-- Salchis -->
-<div class="section-title">🌭 Salchis</div>
-<div class="card"><b>Salchi clásica</b><br>S/10 <button class="btn-add" onclick="agregar('Salchi clásica',10)">Agregar</button></div>
-<div class="card"><b>Choripapa</b><br>S/12 <button class="btn-add" onclick="agregar('Choripapa',12)">Agregar</button></div>
-<div class="card"><b>Salchi Royal</b><br>S/14 <button class="btn-add" onclick="agregar('Salchi Royal',14)">Agregar</button></div>
-<div class="card"><b>Salchipollo</b><br>S/15 <button class="btn-add" onclick="agregar('Salchipollo',15)">Agregar</button></div>
-<div class="card"><b>Salchi nuggets</b><br>S/15 <button class="btn-add" onclick="agregar('Salchi nuggets',15)">Agregar</button></div>
-<div class="card"><b>Salchi a lo misio</b><br>S/16 <button class="btn-add" onclick="agregar('Salchi a lo misio',16)">Agregar</button></div>
-<div class="card"><b>Salchi Monster</b><br>S/18 <button class="btn-add" onclick="agregar('Salchi Monster',18)">Agregar</button></div>
+<div id="salchis" class="section-title">🌭 Salchis</div>
+<div class="card"><b>Salchi clásica</b> S/10 <button class="add" onclick="agregar('Salchi clásica',10)">Agregar</button></div>
+<div class="card"><b>Choripapa</b> S/12 <button class="add" onclick="agregar('Choripapa',12)">Agregar</button></div>
+<div class="card"><b>Salchi Royal</b> S/14 <button class="add" onclick="agregar('Salchi Royal',14)">Agregar</button></div>
+<div class="card"><b>Salchipollo</b> S/15 <button class="add" onclick="agregar('Salchipollo',15)">Agregar</button></div>
+<div class="card"><b>Salchi nuggets</b> S/15 <button class="add" onclick="agregar('Salchi nuggets',15)">Agregar</button></div>
+<div class="card"><b>Salchi a lo misio</b> S/16 <button class="add" onclick="agregar('Salchi a lo misio',16)">Agregar</button></div>
+<div class="card"><b>Salchi Monster</b> S/18 <button class="add" onclick="agregar('Salchi Monster',18)">Agregar</button></div>
 
 <!-- Broasters -->
-<div class="section-title">🍗 Broasters</div>
-<div class="card"><b>Alita</b><br>S/11 <button class="btn-add" onclick="agregar('Alita',11)">Agregar</button></div>
-<div class="card"><b>Pierna</b><br>S/12 <button class="btn-add" onclick="agregar('Pierna',12)">Agregar</button></div>
-<div class="card"><b>Encuentro</b><br>S/12 <button class="btn-add" onclick="agregar('Encuentro',12)">Agregar</button></div>
-<div class="card"><b>Pecho</b><br>S/14 <button class="btn-add" onclick="agregar('Pecho',14)">Agregar</button></div>
-<div class="card"><b>Chicharrón de pollo</b><br>S/13 <button class="btn-add" onclick="agregar('Chicharrón de pollo',13)">Agregar</button></div>
-<div class="card"><b>Pierna completa</b><br>S/18 <button class="btn-add" onclick="agregar('Pierna completa',18)">Agregar</button></div>
-<div class="card"><b>Pecho completo</b><br>S/20 <button class="btn-add" onclick="agregar('Pecho completo',20)">Agregar</button></div>
+<div id="broasters" class="section-title">🍗 Broasters</div>
+<div class="card"><b>Alita</b> S/11 <button class="add" onclick="agregar('Alita',11)">Agregar</button></div>
+<div class="card"><b>Pierna</b> S/12 <button class="add" onclick="agregar('Pierna',12)">Agregar</button></div>
+<div class="card"><b>Encuentro</b> S/12 <button class="add" onclick="agregar('Encuentro',12)">Agregar</button></div>
+<div class="card"><b>Pecho</b> S/14 <button class="add" onclick="agregar('Pecho',14)">Agregar</button></div>
+<div class="card"><b>Chicharrón de pollo</b> S/13 <button class="add" onclick="agregar('Chicharrón de pollo',13)">Agregar</button></div>
+<div class="card"><b>Pierna completa</b> S/18 <button class="add" onclick="agregar('Pierna completa',18)">Agregar</button></div>
+<div class="card"><b>Pecho completo</b> S/20 <button class="add" onclick="agregar('Pecho completo',20)">Agregar</button></div>
 
 <!-- Observaciones y modalidad -->
 <div class="card">
 <label>Observaciones</label>
 <input id="obs" placeholder="Sin cebolla, extra salsa...">
-
 <label>Modalidad</label>
 <select id="modo">
 <option>Para llevar</option>
 <option>Comer en local</option>
 </select>
-
 <div class="total">Total: S/ <span id="total">0</span></div>
-
-<button class="btn-yape" onclick="enviar()">💜 Pagar con Yape</button>
+<button class="btn-yape" onclick="enviar()">Realizar pedido</button>
 </div>
 
 </div>
@@ -74,128 +79,23 @@ input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 <script>
 let carrito=[];
 let total=0;
-
 function agregar(nombre,precio){
   carrito.push(nombre);
   total+=precio;
   document.getElementById("total").innerText=total;
 }
-
 function enviar(){
-  if(total===0){
-    alert("Agrega al menos un producto");
-    return;
-  }
-
+  if(total===0){alert("Agrega al menos un producto"); return;}
   let obs=document.getElementById("obs").value;
   let modo=document.getElementById("modo").value;
-
   let mensaje="*NUEVO PEDIDO*%0A%0A";
   carrito.forEach(p=>mensaje+=p+"%0A");
   mensaje+="%0AModalidad: "+modo;
   mensaje+="%0AObservaciones: "+obs;
   mensaje+="%0ATotal: S/ "+total;
   mensaje+="%0AMetodo: Yape";
-
   window.open("https://wa.me/51998391223?text="+mensaje,"_blank");
 }
 </script>
-
-</body>
-</html>}
-.btn-yape{
-  background:linear-gradient(135deg,#7B2CBF,#9D4EDD);
-  color:#fff;
-}
-.total{
-  font-size:18px;
-  font-weight:bold;
-  margin-top:10px;
-}
-input, select{
-  width:100%;
-  padding:8px;
-  margin-top:5px;
-  margin-bottom:10px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<h2>Haz tu pedido</h2>
-
-<div class="card">
-<b>Alitas BBQ</b><br>S/ 30
-<button class="btn-add" onclick="agregar('Alitas BBQ',30)">Agregar</button>
-</div>
-
-<div class="card">
-<b>Alitas Acevichadas</b><br>S/ 32
-<button class="btn-add" onclick="agregar('Alitas Acevichadas',32)">Agregar</button>
-</div>
-
-<div class="card">
-<b>Chicha Morada</b><br>S/ 8
-<button class="btn-add" onclick="agregar('Chicha Morada',8)">Agregar</button>
-</div>
-
-<div class="card">
-<label>Observaciones</label>
-<input id="obs">
-
-<label>Modalidad</label>
-<select id="modo">
-<option>Para llevar</option>
-<option>Comer en local</option>
-</select>
-
-<div class="total">
-Total: S/ <span id="total">0</span>
-</div>
-
-<button class="btn-yape" onclick="enviar()">
-💜 Pagar con Yape
-</button>
-</div>
-
-</div>
-
-<script>
-let carrito=[];
-let total=0;
-
-function agregar(nombre,precio){
-  carrito.push(nombre);
-  total+=precio;
-  document.getElementById("total").innerText=total;
-}
-
-function enviar(){
-  if(total===0){
-    alert("Agrega al menos un producto");
-    return;
-  }
-
-  let obs=document.getElementById("obs").value;
-  let modo=document.getElementById("modo").value;
-
-  let mensaje="*NUEVO PEDIDO*%0A%0A";
-
-  carrito.forEach(p=>{
-    mensaje+=p+"%0A";
-  });
-
-  mensaje+="%0AModalidad: "+modo;
-  mensaje+="%0AObservaciones: "+obs;
-  mensaje+="%0ATotal: S/ "+total;
-  mensaje+="%0AMetodo: Yape";
-
-  window.open("https://wa.me/51998391223?text="+mensaje,"_blank");
-}
-</script>
-
 </body>
 </html>
