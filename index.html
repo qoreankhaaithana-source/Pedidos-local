@@ -5,25 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Monster Burger & Grill</title>
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff; }
-  .header { background:#fff; padding:10px; position:sticky; top:0; z-index:10; display:flex; flex-direction:column; align-items:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-  .header h1 { color:#8B4513; font-weight:bold; margin:0; font-size:1.8rem; text-align:center;}
-  .secciones { margin-top:10px; display:flex; gap:5px; flex-wrap:wrap; justify-content:center; }
-  .secciones button, #btnCarrito { background:orange; color:#fff; border:none; padding:6px 10px; border-radius:5px; font-weight:bold; cursor:pointer; text-transform:uppercase;}
-  #btnCarrito { background:#32CD32; margin-bottom:5px; }
-  .menu, .carritoOverlay { padding:10px; max-width:500px; margin:0 auto; }
-  .card { border:1px solid #ddd; border-radius:5px; padding:10px; margin-bottom:10px; display:flex; flex-direction:column; }
-  .card-top { display:flex; justify-content:space-between; align-items:center; }
-  .card-buttons button { margin-left:3px; margin-right:3px; padding:2px 6px; cursor:pointer; }
-  .input-obs { margin-top:5px; padding:4px; width:100%; border:1px solid #ccc; border-radius:4px; }
-  .carritoOverlay { position:fixed; top:60px; right:0; width:100%; max-width:400px; height:80%; background:#fff; box-shadow:-2px 0 8px rgba(0,0,0,0.2); overflow-y:auto; display:none; z-index:20; padding:10px; }
-  #btnCerrarCarrito { background:red; color:#fff; padding:5px 8px; border:none; cursor:pointer; border-radius:4px; margin-bottom:10px; }
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff; }
+.header { background:#fff; padding:10px; position:sticky; top:0; z-index:10; display:flex; flex-direction:column; align-items:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.header h1 { color:#8B4513; font-weight:bold; margin:0; font-size:1.8rem; text-align:center;}
+.secciones { margin-top:10px; display:flex; gap:5px; flex-wrap:wrap; justify-content:center; }
+.secciones button, #btnCarrito { background:orange; color:#fff; border:none; padding:6px 10px; border-radius:5px; font-weight:bold; cursor:pointer; text-transform:uppercase;}
+#btnCarrito { background:#32CD32; margin-bottom:5px; }
+.menu, .carritoOverlay { padding:10px; max-width:500px; margin:0 auto; }
+.card { border:1px solid #ddd; border-radius:5px; padding:10px; margin-bottom:10px; display:flex; flex-direction:column; }
+.card-top { display:flex; justify-content:space-between; align-items:center; }
+.card-buttons button { margin-left:3px; margin-right:3px; padding:2px 6px; cursor:pointer; }
+.input-obs { margin-top:5px; padding:4px; width:100%; border:1px solid #ccc; border-radius:4px; }
+.carritoOverlay { position:fixed; top:60px; right:0; width:100%; max-width:400px; height:80%; background:#fff; box-shadow:-2px 0 8px rgba(0,0,0,0.2); overflow-y:auto; display:none; z-index:20; padding:10px; }
+#btnCerrarCarrito { background:red; color:#fff; padding:5px 8px; border:none; cursor:pointer; border-radius:4px; margin-bottom:10px; }
+.totalCarrito { font-weight:bold; margin-top:10px; text-align:right; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>🔥The Monster Burger & Grill🔥</h1>
+  <h1>🔥 The Monster Burger & Grill 🔥</h1>
   <button id="btnCarrito" onclick="toggleCarrito()">Carrito</button>
   <div class="secciones">
     <button onclick="scrollToSection('Burgers')">BURGERS</button>
@@ -35,33 +36,27 @@
 </div>
 
 <div class="menu">
-
-<!-- BURGERS -->
 <h2 id="Burgers">BURGERS 🍔</h2>
 <div id="menuBurgers"></div>
 
-<!-- SALCHIS -->
 <h2 id="Salchis">SALCHIS 🍟</h2>
 <div id="menuSalchis"></div>
 
-<!-- BROASTERS -->
 <h2 id="Broasters">BROASTERS 🍗</h2>
 <div id="menuBroasters"></div>
 
-<!-- ALITAS -->
 <h2 id="Alitas">ALITAS 🍗</h2>
 <div id="menuAlitas"></div>
 
-<!-- A LA PLANCHA -->
 <h2 id="AlaPlancha">A LA PLANCHA 🥩</h2>
 <div id="menuAlaPlancha"></div>
-
 </div>
 
 <div class="carritoOverlay" id="carritoOverlay">
   <button id="btnCerrarCarrito" onclick="toggleCarrito()">Cerrar</button>
   <h3>Tu carrito</h3>
   <div id="contenidoCarrito"></div>
+  <div class="totalCarrito" id="totalCarrito">Total: S/0</div>
   <label>Modalidad:</label>
   <select id="modalidad">
     <option value="Comer en local">Comer en local</option>
@@ -74,7 +69,7 @@
 <script>
 let carrito = [];
 
-// Definir toda la carta en arrays
+// Carta completa
 const carta = {
   Burgers:[
     {nombre:"Burger clásica",precio:10},
@@ -129,7 +124,7 @@ const carta = {
   ]
 };
 
-// Función para crear cards dinámicamente
+// Generar menú sin observaciones
 function generarMenu(){
   for(const seccion in carta){
     const contenedor = document.getElementById("menu"+seccion);
@@ -142,8 +137,7 @@ function generarMenu(){
         <span id="cant-${item.nombre}">0</span>
         <button onclick="agregar('${item.nombre}',${item.precio})">+</button>
         <button onclick="eliminar('${item.nombre}')">🗑</button>
-      </div></div>
-      <input type="text" placeholder="Observaciones para ${item.nombre}" class="input-obs" id="obs-${item.nombre}">`;
+      </div></div>`;
       contenedor.appendChild(div);
     });
   }
@@ -152,11 +146,10 @@ function generarMenu(){
 // Funciones carrito
 function agregar(nombre,precio){
   let item = carrito.find(i=>i.nombre===nombre);
-  let obsInput = document.getElementById('obs-'+nombre);
   if(item){
     item.cantidad++;
   } else {
-    carrito.push({nombre,nombre, cantidad:1, precio, observaciones: obsInput?obsInput.value:''});
+    carrito.push({nombre, cantidad:1, precio, observaciones:''});
   }
   actualizarCantidad(nombre);
   actualizarCarrito();
@@ -182,14 +175,14 @@ function actualizarCantidad(nombre){
   let span = document.getElementById('cant-'+nombre);
   let item = carrito.find(i=>i.nombre===nombre);
   if(span) span.innerText = item?item.cantidad:0;
-  let obsInput = document.getElementById('obs-'+nombre);
-  if(item && obsInput) item.observaciones = obsInput.value;
 }
 
 function actualizarCarrito(){
-  let div = document.getElementById('contenidoCarrito');
+  const div = document.getElementById('contenidoCarrito');
   div.innerHTML='';
+  let total = 0;
   carrito.forEach(item=>{
+    total += item.precio*item.cantidad;
     if(item.cantidad>0){
       let card = document.createElement('div');
       card.className='card';
@@ -206,6 +199,7 @@ function actualizarCarrito(){
       div.appendChild(card);
     }
   });
+  document.getElementById('totalCarrito').innerText = `Total: S/${total}`;
 }
 
 function toggleCarrito(){
@@ -220,22 +214,23 @@ function scrollToSection(id){
 function enviarPedidoWhatsApp(){
   if(carrito.length===0){ alert("El carrito está vacío"); return;}
   let mensaje = "📋 *Pedido The Monster Burger*\n\n";
+  let total = 0;
   carrito.forEach(item=>{
     if(item.cantidad>0){
       mensaje+=`• ${item.nombre} x${item.cantidad}`;
       if(item.observaciones && item.observaciones.trim()!=="") mensaje+=` (Obs: ${item.observaciones})`;
       mensaje+='\n';
+      total += item.cantidad*item.precio;
     }
   });
   let modalidad = document.getElementById('modalidad').value;
-  mensaje+=`\nModalidad: ${modalidad}\n`;
-  mensaje+="\nGracias por elegirnos! 🍔🔥";
+  mensaje+=`\nModalidad: ${modalidad}\nTotal: S/${total}`;
+  mensaje+="\n\nGracias por elegirnos! 🍔🔥";
   const numero = "+51998391223";
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url,'_blank');
 }
 
-// Generar menú al cargar
 window.onload = generarMenu;
 </script>
 
