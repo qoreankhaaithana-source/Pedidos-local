@@ -71,57 +71,11 @@ let carrito = [];
 
 // Carta completa
 const carta = {
-  Burgers:[
-    {nombre:"Burger clásica",precio:10},
-    {nombre:"Burger cheese",precio:13},
-    {nombre:"Burger royal",precio:13},
-    {nombre:"Burger chicken",precio:14},
-    {nombre:"Burger hawaiana",precio:14},
-    {nombre:"Burger a los misio",precio:15},
-    {nombre:"Burger baconator",precio:16},
-    {nombre:"Two Burger",precio:17},
-    {nombre:"Burger Monster",precio:20}
-  ],
-  Salchis:[
-    {nombre:"Salchi clásica",precio:10},
-    {nombre:"Choripapa",precio:12},
-    {nombre:"Salchi Royal",precio:14},
-    {nombre:"Salchipollo",precio:15},
-    {nombre:"Salchi nuggets",precio:15},
-    {nombre:"Salchi a lo misio",precio:16},
-    {nombre:"Salchi Monster",precio:18}
-  ],
-  Broasters:[
-    {nombre:"Alita",precio:11},
-    {nombre:"Pierna",precio:12},
-    {nombre:"Encuentro",precio:12},
-    {nombre:"Pecho",precio:14},
-    {nombre:"Chicharrón de pollo",precio:13},
-    {nombre:"Pierna completa",precio:18},
-    {nombre:"Pecho completo",precio:20}
-  ],
-  Alitas:[
-    {nombre:"BBQ x4",precio:12},
-    {nombre:"BBQ x6",precio:18},
-    {nombre:"Acevichadas x4",precio:12},
-    {nombre:"Acevichadas x6",precio:18},
-    {nombre:"Búfalo x4",precio:12},
-    {nombre:"Búfalo x6",precio:18},
-    {nombre:"Piña x4",precio:12},
-    {nombre:"Piña x6",precio:18},
-    {nombre:"Maracuya x4",precio:12},
-    {nombre:"Maracuya x6",precio:18}
-  ],
-  AlaPlancha:[
-    {nombre:"Churrasco",precio:18},
-    {nombre:"Chuleta",precio:18},
-    {nombre:"Alita a la plancha",precio:11},
-    {nombre:"Pierna a la plancha",precio:12},
-    {nombre:"Encuentro a la plancha",precio:12},
-    {nombre:"Pecho a la plancha",precio:14},
-    {nombre:"Pierna completa a la plancha",precio:18},
-    {nombre:"Pecho completo a la plancha",precio:20}
-  ]
+  Burgers:[{nombre:"Burger clásica",precio:10},{nombre:"Burger cheese",precio:13},{nombre:"Burger royal",precio:13},{nombre:"Burger chicken",precio:14},{nombre:"Burger hawaiana",precio:14},{nombre:"Burger a los misio",precio:15},{nombre:"Burger baconator",precio:16},{nombre:"Two Burger",precio:17},{nombre:"Burger Monster",precio:20}],
+  Salchis:[{nombre:"Salchi clásica",precio:10},{nombre:"Choripapa",precio:12},{nombre:"Salchi Royal",precio:14},{nombre:"Salchipollo",precio:15},{nombre:"Salchi nuggets",precio:15},{nombre:"Salchi a lo misio",precio:16},{nombre:"Salchi Monster",precio:18}],
+  Broasters:[{nombre:"Alita",precio:11},{nombre:"Pierna",precio:12},{nombre:"Encuentro",precio:12},{nombre:"Pecho",precio:14},{nombre:"Chicharrón de pollo",precio:13},{nombre:"Pierna completa",precio:18},{nombre:"Pecho completo",precio:20}],
+  Alitas:[{nombre:"BBQ x4",precio:12},{nombre:"BBQ x6",precio:18},{nombre:"Acevichadas x4",precio:12},{nombre:"Acevichadas x6",precio:18},{nombre:"Búfalo x4",precio:12},{nombre:"Búfalo x6",precio:18},{nombre:"Piña x4",precio:12},{nombre:"Piña x6",precio:18},{nombre:"Maracuya x4",precio:12},{nombre:"Maracuya x6",precio:18}],
+  AlaPlancha:[{nombre:"Churrasco",precio:18},{nombre:"Chuleta",precio:18},{nombre:"Alita a la plancha",precio:11},{nombre:"Pierna a la plancha",precio:12},{nombre:"Encuentro a la plancha",precio:12},{nombre:"Pecho a la plancha",precio:14},{nombre:"Pierna completa a la plancha",precio:18},{nombre:"Pecho completo a la plancha",precio:20}]
 };
 
 // Generar menú sin observaciones
@@ -177,11 +131,12 @@ function actualizarCantidad(nombre){
   if(span) span.innerText = item?item.cantidad:0;
 }
 
+// Generar carrito con observaciones solo aquí
 function actualizarCarrito(){
   const div = document.getElementById('contenidoCarrito');
   div.innerHTML='';
   let total = 0;
-  carrito.forEach(item=>{
+  carrito.forEach((item,index)=>{
     total += item.precio*item.cantidad;
     if(item.cantidad>0){
       let card = document.createElement('div');
@@ -195,7 +150,7 @@ function actualizarCarrito(){
           <button onclick="eliminar('${item.nombre}')">🗑</button>
         </div>
       </div>
-      <input type="text" placeholder="Observaciones para ${item.nombre}" class="input-obs" value="${item.observaciones}" oninput="item.observaciones=this.value">`;
+      <input type="text" placeholder="Observaciones para ${item.nombre}" class="input-obs" value="${item.observaciones}" oninput="carrito[${index}].observaciones=this.value">`;
       div.appendChild(card);
     }
   });
@@ -220,7 +175,7 @@ function enviarPedidoWhatsApp(){
       mensaje+=`• ${item.nombre} x${item.cantidad}`;
       if(item.observaciones && item.observaciones.trim()!=="") mensaje+=` (Obs: ${item.observaciones})`;
       mensaje+='\n';
-      total += item.cantidad*item.precio;
+      total += item.precio*item.cantidad;
     }
   });
   let modalidad = document.getElementById('modalidad').value;
@@ -235,4 +190,4 @@ window.onload = generarMenu;
 </script>
 
 </body>
-</html>
+</html> 
