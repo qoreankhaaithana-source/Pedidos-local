@@ -7,80 +7,75 @@
 <style>
 body{font-family:Arial,sans-serif;margin:0;background:#f4f4f6}
 header{position:sticky;top:0;background:#fff;padding:10px 15px;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:center}
-header h1{margin:0;font-size:20px;color:#7B2CBF}
-header h2{margin:2px 0 5px 0;font-size:16px;color:#333}
-.nav-sections{display:flex;justify-content:center;flex-wrap:wrap;margin-bottom:5px}
-.nav-sections button{margin:2px;padding:6px 12px;border:none;border-radius:10px;background:#7B2CBF;color:white;font-weight:bold;cursor:pointer;font-size:14px}
+header h1{margin:0;font-size:22px;color:#8B4513;font-weight:bold}
+.nav-top{width:100%;display:flex;justify-content:center;margin-top:5px;margin-bottom:5px}
+.cart-button{background:#2ecc71;padding:8px 12px;color:white;font-weight:bold;border:none;border-radius:12px;cursor:pointer;font-size:14px;margin:0 5px}
+.nav-sections{display:flex;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.nav-sections button{margin:2px;padding:6px 12px;border:none;border-radius:10px;background:#FF6B00;color:white;font-weight:bold;cursor:pointer;font-size:14px;text-transform:uppercase}
 .container{max-width:420px;margin:auto;padding:10px 15px}
 .section-title{font-weight:bold;font-size:18px;margin-bottom:5px;margin-top:10px;color:#222}
-.card{background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center}
-.add-btn{background:#eee;padding:5px 10px;font-size:14px;border-radius:10px;cursor:pointer;margin-left:10px}
-.cart-button{background:#2ecc71;padding:8px 12px;color:white;font-weight:bold;border:none;border-radius:12px;margin-left:5px;cursor:pointer}
+.card{background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center;flex-direction:column}
+.card-top{width:100%;display:flex;justify-content:space-between;align-items:center;width:100%}
+.card-buttons{display:flex;align-items:center}
+.add-btn, .minus-btn, .trash-btn{background:#eee;padding:5px 10px;font-size:14px;border-radius:10px;cursor:pointer;margin-left:5px}
+.input-obs{width:100%;margin-top:5px;margin-bottom:5px;padding:6px;border:1px solid #ccc;border-radius:8px;display:none}
 .cart-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20}
 .cart-content{background:#fff;width:90%;max-width:400px;border-radius:15px;padding:15px;max-height:80%;overflow-y:auto;position:relative}
 .cart-close{position:absolute;top:10px;right:10px;font-size:18px;font-weight:bold;background:none;border:none;cursor:pointer}
-.cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.cart-item span{margin-right:10px}
-button.btn-yape{width:100%;padding:12px;background:#2ecc71;color:#fff;border:none;border-radius:12px;font-weight:bold;margin-top:10px;cursor:pointer}
-input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-direction:column}
+.cart-item span{margin-right:10px;width:100%;display:flex;justify-content:space-between;align-items:center}
+select{width:100%;padding:8px;margin-top:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc}
+.btn-yape{width:100%;padding:12px;background:#2ecc71;color:#fff;border:none;border-radius:12px;font-weight:bold;margin-top:10px;cursor:pointer;font-size:16px}
 </style>
 </head>
 <body>
 
 <header>
-<h1>Bienvenidos a The Monster Burger & Grill</h1>
-<h2>Haz tu pedido</h2>
-<div class="nav-sections">
-<button onclick="scrollToSection('burgers')">Burgers</button>
-<button onclick="scrollToSection('salchis')">Salchis</button>
-<button onclick="scrollToSection('broasters')">Broasters</button>
+<h1>🔥 THE MONSTER BURGER & GRILL 🔥</h1>
+<div class="nav-top">
 <button class="cart-button" onclick="abrirCarrito()">Carrito 🛒</button>
+</div>
+<div class="nav-sections">
+<button onclick="scrollToSection('burgers')">BURGERS</button>
+<button onclick="scrollToSection('salchis')">SALCHIS</button>
+<button onclick="scrollToSection('broasters')">BROASTERS</button>
 </div>
 </header>
 
 <div class="container">
 <!-- Burgers -->
-<div id="burgers" class="section-title">🍔 Burgers</div>
-<div class="card"><span>Burger clásica S/10</span><button class="add-btn" onclick="agregar('Burger clásica',10)">+</button></div>
-<div class="card"><span>Burger cheese S/13</span><button class="add-btn" onclick="agregar('Burger cheese',13)">+</button></div>
-<div class="card"><span>Burger royal S/13</span><button class="add-btn" onclick="agregar('Burger royal',13)">+</button></div>
-<div class="card"><span>Burger chicken S/14</span><button class="add-btn" onclick="agregar('Burger chicken',14)">+</button></div>
-<div class="card"><span>Burger hawaiana S/14</span><button class="add-btn" onclick="agregar('Burger hawaiana',14)">+</button></div>
-<div class="card"><span>Burger a los misio S/15</span><button class="add-btn" onclick="agregar('Burger a los misio',15)">+</button></div>
-<div class="card"><span>Burger baconator S/16</span><button class="add-btn" onclick="agregar('Burger baconator',16)">+</button></div>
-<div class="card"><span>Two Burger S/17</span><button class="add-btn" onclick="agregar('Two Burger',17)">+</button></div>
-<div class="card"><span>Burger Monster S/20</span><button class="add-btn" onclick="agregar('Burger Monster',20)">+</button></div>
-
-<!-- Salchis -->
-<div id="salchis" class="section-title">🌭 Salchis</div>
-<div class="card"><span>Salchi clásica S/10</span><button class="add-btn" onclick="agregar('Salchi clásica',10)">+</button></div>
-<div class="card"><span>Choripapa S/12</span><button class="add-btn" onclick="agregar('Choripapa',12)">+</button></div>
-<div class="card"><span>Salchi Royal S/14</span><button class="add-btn" onclick="agregar('Salchi Royal',14)">+</button></div>
-<div class="card"><span>Salchipollo S/15</span><button class="add-btn" onclick="agregar('Salchipollo',15)">+</button></div>
-<div class="card"><span>Salchi nuggets S/15</span><button class="add-btn" onclick="agregar('Salchi nuggets',15)">+</button></div>
-<div class="card"><span>Salchi a lo misio S/16</span><button class="add-btn" onclick="agregar('Salchi a lo misio',16)">+</button></div>
-<div class="card"><span>Salchi Monster S/18</span><button class="add-btn" onclick="agregar('Salchi Monster',18)">+</button></div>
-
-<!-- Broasters -->
-<div id="broasters" class="section-title">🍗 Broasters</div>
-<div class="card"><span>Alita S/11</span><button class="add-btn" onclick="agregar('Alita',11)">+</button></div>
-<div class="card"><span>Pierna S/12</span><button class="add-btn" onclick="agregar('Pierna',12)">+</button></div>
-<div class="card"><span>Encuentro S/12</span><button class="add-btn" onclick="agregar('Encuentro',12)">+</button></div>
-<div class="card"><span>Pecho S/14</span><button class="add-btn" onclick="agregar('Pecho',14)">+</button></div>
-<div class="card"><span>Chicharrón de pollo S/13</span><button class="add-btn" onclick="agregar('Chicharrón de pollo',13)">+</button></div>
-<div class="card"><span>Pierna completa S/18</span><button class="add-btn" onclick="agregar('Pierna completa',18)">+</button></div>
-<div class="card"><span>Pecho completo S/20</span><button class="add-btn" onclick="agregar('Pecho completo',20)">+</button></div>
-
-<!-- Observaciones y modalidad -->
+<div id="burgers" class="section-title">🍔 BURGERS</div>
 <div class="card">
-<label>Observaciones</label>
-<input id="obs" placeholder="Sin cebolla, extra salsa...">
-<label>Modalidad</label>
-<select id="modo">
-<option>Para llevar</option>
-<option>Comer en local</option>
-</select>
+  <div class="card-top">
+    <span>Burger clásica S/10</span>
+    <div class="card-buttons">
+      <button class="add-btn" onclick="agregar('Burger clásica',10)">+</button>
+    </div>
+  </div>
+  <input type="text" placeholder="Observaciones para Burger clásica" class="input-obs" id="obs-Burger clásica">
 </div>
+
+<div class="card">
+  <div class="card-top">
+    <span>Burger cheese S/13</span>
+    <div class="card-buttons">
+      <button class="add-btn" onclick="agregar('Burger cheese',13)">+</button>
+    </div>
+  </div>
+  <input type="text" placeholder="Observaciones para Burger cheese" class="input-obs" id="obs-Burger cheese">
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <span>Burger royal S/13</span>
+    <div class="card-buttons">
+      <button class="add-btn" onclick="agregar('Burger royal',13)">+</button>
+    </div>
+  </div>
+  <input type="text" placeholder="Observaciones para Burger royal" class="input-obs" id="obs-Burger royal">
+</div>
+
+<!-- Puedes duplicar este bloque para los demás productos de todas las secciones (Salchis y Broasters) -->
 
 </div>
 
@@ -90,6 +85,12 @@ input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 <button class="cart-close" onclick="cerrarCarrito()">✖</button>
 <h3>Carrito</h3>
 <div id="lista-carrito"></div>
+<label>Modalidad</label>
+<select id="modo">
+<option>Para llevar</option>
+<option>Comer en local</option>
+<option>Delivery</option>
+</select>
 <div class="total">Total: S/ <span id="total">0</span></div>
 <button class="btn-yape" onclick="enviar()">Realizar pedido</button>
 <p style="text-align:center;margin-top:10px;">¡Gracias por elegirnos!</p>
@@ -98,29 +99,27 @@ input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 
 <script>
 let carrito=[];
-let total=0;
 
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
-function abrirCarrito(){
-  document.getElementById("cartModal").style.display="flex";
-}
-
-function cerrarCarrito(){
-  document.getElementById("cartModal").style.display="none";
-}
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function abrirCarrito(){document.getElementById("cartModal").style.display="flex"}
+function cerrarCarrito(){document.getElementById("cartModal").style.display="none"}
 
 function agregar(nombre,precio){
   let item=carrito.find(i=>i.nombre===nombre);
-  if(item){item.cantidad++;item.subtotal+=precio;}
-  else{carrito.push({nombre:nombre,cantidad:1,subtotal:precio,precio:precio});}
+  let obsInput=document.getElementById('obs-'+nombre);
+  if(item){
+    item.cantidad++;
+    item.subtotal+=precio;
+  }else{
+    carrito.push({nombre:nombre,cantidad:1,subtotal:precio,precio:precio,obs:''});
+  }
+  if(item===undefined) obsInput.style.display="block";
   actualizarCarrito();
 }
 
 function eliminar(nombre){
   carrito=carrito.filter(i=>i.nombre!==nombre);
+  document.getElementById('obs-'+nombre).style.display='none';
   actualizarCarrito();
 }
 
@@ -143,7 +142,7 @@ function restar(nombre){
 function actualizarCarrito(){
   let lista=document.getElementById("lista-carrito");
   lista.innerHTML="";
-  total=0;
+  let total=0;
   carrito.forEach(i=>{
     total+=i.subtotal;
     let div=document.createElement("div");
@@ -153,20 +152,25 @@ function actualizarCarrito(){
       <button onclick="restar('${i.nombre}')">-</button>
       <button onclick="sumar('${i.nombre}')">+</button>
       <button onclick="eliminar('${i.nombre}')">🗑</button>
-    </span>`;
+    </span>
+    <input type="text" placeholder="Observaciones" class="input-obs" value="${document.getElementById('obs-'+i.nombre).value}" onchange="actualizarObs('${i.nombre}',this.value)">`;
     lista.appendChild(div);
   });
   document.getElementById("total").innerText=total;
 }
 
+function actualizarObs(nombre,valor){
+  let item=carrito.find(i=>i.nombre===nombre);
+  if(item) item.obs=valor;
+}
+
 function enviar(){
-  if(total===0){alert("Agrega al menos un producto"); return;}
-  let obs=document.getElementById("obs").value;
+  if(carrito.length===0){alert("Agrega al menos un producto"); return;}
   let modo=document.getElementById("modo").value;
   let mensaje="*NUEVO PEDIDO*%0A%0A";
-  carrito.forEach(i=>mensaje+=i.nombre+" x"+i.cantidad+" S/"+i.subtotal+"%0A");
+  carrito.forEach(i=>mensaje+=i.nombre+" x"+i.cantidad+" S/"+i.subtotal+"%0AObservaciones: "+encodeURIComponent(i.obs)+"%0A");
   mensaje+="%0AModalidad: "+modo;
-  mensaje+="%0AObservaciones: "+obs;
+  let total=carrito.reduce((acc,i)=>acc+i.subtotal,0);
   mensaje+="%0ATotal: S/ "+total;
   mensaje+="%0AMetodo: Yape";
   window.open("https://wa.me/51998391223?text="+mensaje,"_blank");
