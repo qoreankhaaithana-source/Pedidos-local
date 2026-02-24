@@ -94,3 +94,103 @@ select{width:100%;padding:8px;margin-top:10px;margin-bottom:10px;border-radius:8
 <div id="plancha" class="section-title">🥩 A LA PLANCHA</div>
 <div class="card"><div class="card-top"><span>Churrasco – S/18</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Churrasco',18)">+</button></div></div><input type="text" placeholder="Observaciones para Churrasco" class="input-obs" id="obs-Churrasco"></div>
 <div class="card"><div class="card-top"><span>Chuleta – S/18</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Chuleta',18)">+</button></div></
+<div class="card"><div class="card-top"><span>Ala – S/11</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Ala',11)">+</button></div></div><input type="text" placeholder="Observaciones para Ala" class="input-obs" id="obs-Ala"></div>
+<div class="card"><div class="card-top"><span>Pierna – S/12</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Pierna plancha',12)">+</button></div></div><input type="text" placeholder="Observaciones para Pierna" class="input-obs" id="obs-Pierna plancha"></div>
+<div class="card"><div class="card-top"><span>Encuentro – S/12</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Encuentro plancha',12)">+</button></div></div><input type="text" placeholder="Observaciones para Encuentro" class="input-obs" id="obs-Encuentro plancha"></div>
+<div class="card"><div class="card-top"><span>Pecho – S/14</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Pecho plancha',14)">+</button></div></div><input type="text" placeholder="Observaciones para Pecho" class="input-obs" id="obs-Pecho plancha"></div>
+<div class="card"><div class="card-top"><span>Pierna completa – S/18</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Pierna completa plancha',18)">+</button></div></div><input type="text" placeholder="Observaciones para Pierna completa" class="input-obs" id="obs-Pierna completa plancha"></div>
+<div class="card"><div class="card-top"><span>Pecho completo – S/20</span><div class="card-buttons"><button class="add-btn" onclick="agregar('Pecho completo plancha',20)">+</button></div></div><input type="text" placeholder="Observaciones para Pecho completo" class="input-obs" id="obs-Pecho completo plancha"></div>
+
+</div> <!-- Cierre container -->
+
+<!-- Carrito Modal -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-content">
+    <button class="cart-close" onclick="cerrarCarrito()">✖</button>
+    <h3>Carrito</h3>
+    <div id="lista-carrito"></div>
+    <label>Modalidad</label>
+    <select id="modo">
+      <option>Para llevar</option>
+      <option>Comer en local</option>
+      <option>Delivery</option>
+    </select>
+    <div class="total">Total: S/ <span id="total">0</span></div>
+    <button class="btn-yape" onclick="enviar()">Realizar pedido</button>
+    <p style="text-align:center;margin-top:10px;">¡Gracias por elegirnos!</p>
+  </div>
+</div>
+
+<script>
+let carrito=[];
+
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function abrirCarrito(){document.getElementById("cartModal").style.display="flex"}
+function cerrarCarrito(){document.getElementById("cartModal").style.display="none"}
+
+function agregar(nombre,precio){
+  let item=carrito.find(i=>i.nombre===nombre);
+  let obsInput=document.getElementById('obs-'+nombre);
+  if(item){item.cantidad++;item.subtotal+=precio;} 
+  else {carrito.push({nombre:nombre,cantidad:1,subtotal:precio,precio:precio,obs:''}); obsInput.style.display="block";}
+  actualizarCarrito();
+}
+
+function eliminar(nombre){
+  carrito=carrito.filter(i=>i.nombre!==nombre);
+  document.getElementById('obs-'+nombre).style.display='none';
+  actualizarCarrito();
+}
+
+function sumar(nombre){
+  let item=carrito.find(i=>i.nombre===nombre);
+  if(item){item.cantidad++;item.subtotal+=item.precio;}
+  actualizarCarrito();
+}
+
+function restar(nombre){
+  let item=carrito.find(i=>i.nombre===nombre);
+  if(item){item.cantidad--;item.subtotal-=item.precio;if(item.cantidad<=0) eliminar(nombre);}
+  actualizarCarrito();
+}
+
+function actualizarCarrito(){
+  let lista=document.getElementById("lista-carrito");
+  lista.innerHTML="";
+  let total=0;
+  carrito.forEach(i=>{
+    total+=i.subtotal;
+    let div=document.createElement("div");
+    div.className="cart-item";
+    div.innerHTML=`<span>${i.nombre} x${i.cantidad} S/${i.subtotal}</span>
+    <span>
+      <button onclick="restar('${i.nombre}')">-</button>
+      <button onclick="sumar('${i.nombre}')">+</button>
+      <button onclick="eliminar('${i.nombre}')">🗑</button>
+    </span>
+    <input type="text" placeholder="Observaciones" class="input-obs" value="${document.getElementById('obs-'+i.nombre).value}" onchange="actualizarObs('${i.nombre}',this.value)">`;
+    lista.appendChild(div);
+  });
+  document.getElementById("total").innerText=total;
+}
+
+function actualizarObs(nombre,valor){
+  let item=carrito.find(i=>i.nombre===nombre);
+  if(item) item.obs=valor;
+}
+
+function enviar(){
+  if(carrito.length===0){alert("Agrega al menos un producto"); return;}
+  let modo=document.getElementById("modo").value;
+  let mensaje="*NUEVO PEDIDO*%0A%0A";
+  carrito.forEach(i=>mensaje+=i.nombre+" x"+i.cantidad+" S/"+i.subtotal+"%0AObservaciones: "+encodeURIComponent(i.obs)+"%0A");
+  mensaje+="%0AModalidad: "+modo;
+  let total=carrito.reduce((acc,i)=>acc+i.subtotal,0);
+  mensaje+="%0ATotal: S/ "+total;
+  mensaje+="%0AMetodo: Yape";
+  window.open("https://wa.me/51998391223?text="+mensaje,"_blank");
+}
+</script>
+
+</body>
+</html>
