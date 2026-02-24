@@ -5,29 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Monster Burger & Grill</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#fff; }
 .header { background:#fff; padding:10px; position:sticky; top:0; z-index:20; display:flex; flex-direction:column; align-items:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-.header h1 { color:#8B4513; font-weight:bold; margin:0; font-size:1.9rem; text-align:center; }
+.header h1 { color:#8B4513; font-weight:bold; margin:0; font-size:2rem; text-align:center; text-shadow:1px 1px 2px rgba(0,0,0,0.2);}
 .secciones { margin-top:10px; display:flex; gap:5px; flex-wrap:wrap; justify-content:center; }
-.secciones button { background:orange; color:#fff; border:none; padding:6px 10px; border-radius:5px; font-weight:bold; cursor:pointer; text-transform:uppercase; }
-#btnCarrito { background:#32CD32; color:#fff; border:none; padding:8px 12px; border-radius:6px; font-weight:bold; cursor:pointer; position:fixed; top:10px; right:10px; z-index:30; }
+.secciones button { background:orange; color:#fff; border:none; padding:6px 10px; border-radius:8px; font-weight:bold; cursor:pointer; text-transform:uppercase; transition:all 0.2s ease; }
+.secciones button:hover { transform:scale(1.05); }
+#btnCarrito { background:#32CD32; color:#fff; border:none; padding:8px 12px; border-radius:10px; font-weight:bold; cursor:pointer; position:sticky; top:70px; z-index:25; transition:all 0.3s ease; }
+#btnCarrito:hover { transform:scale(1.05); }
 .menu { padding:10px; max-width:500px; margin:0 auto; }
-.card { border:1px solid #ddd; border-radius:8px; padding:10px; margin-bottom:10px; display:flex; flex-direction:column; }
+.card { border:1px solid #ddd; border-radius:12px; padding:12px; margin-bottom:12px; display:flex; flex-direction:column; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:all 0.2s ease; }
+.card:hover { transform:scale(1.01); box-shadow:0 4px 12px rgba(0,0,0,0.1); }
 .card-top { display:flex; justify-content:space-between; align-items:center; }
-.card-buttons button { margin-left:3px; margin-right:3px; padding:3px 6px; cursor:pointer; border-radius:4px; border:none; }
-.input-obs { margin-top:5px; padding:6px; width:100%; border:1px solid #ccc; border-radius:5px; }
-.carritoOverlay { position:fixed; top:70px; right:0; width:100%; max-width:400px; height:80%; background:#fff; box-shadow:-3px 0 15px rgba(0,0,0,0.3); overflow-y:auto; display:none; z-index:25; padding:10px; border-radius:10px 0 0 10px; }
-#btnCerrarCarrito { background:red; color:#fff; padding:5px 10px; border:none; cursor:pointer; border-radius:4px; margin-bottom:10px; }
+.card-buttons button { margin-left:4px; margin-right:4px; padding:4px 8px; cursor:pointer; border-radius:5px; border:none; transition:all 0.2s ease; }
+.card-buttons button:hover { transform:scale(1.1); }
+.input-obs { margin-top:6px; padding:6px; width:100%; border:1px solid #ccc; border-radius:6px; }
+.carritoOverlay { position:fixed; top:130px; right:-450px; width:100%; max-width:400px; height:75%; background:#fff; box-shadow:-3px 0 20px rgba(0,0,0,0.3); overflow-y:auto; z-index:30; padding:12px; border-radius:12px 0 0 12px; transition:right 0.5s ease; }
+.carritoOverlay.show { right:0; }
+#btnCerrarCarrito { background:red; color:#fff; padding:6px 12px; border:none; cursor:pointer; border-radius:6px; margin-bottom:10px; transition:all 0.2s ease; }
+#btnCerrarCarrito:hover { transform:scale(1.05); }
 .totalCarrito { font-weight:bold; margin-top:10px; text-align:right; font-size:1.1rem; }
-select { margin-top:5px; padding:6px; border-radius:5px; border:1px solid #ccc; width:100%; }
-button.realizarPedido { background:#32CD32; color:#fff; padding:8px 12px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:10px; width:100%; font-size:1rem; }
-h2 { margin-top:20px; color:#8B0000; font-size:1.4rem; text-transform:uppercase; border-bottom:1px solid #ddd; padding-bottom:5px; }
+select { margin-top:5px; padding:6px; border-radius:6px; border:1px solid #ccc; width:100%; }
+button.realizarPedido { background:#32CD32; color:#fff; padding:8px 12px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:10px; width:100%; font-size:1rem; transition:all 0.3s ease; }
+button.realizarPedido:hover { transform:scale(1.05); }
+h2 { margin-top:20px; color:#8B0000; font-size:1.5rem; text-transform:uppercase; border-bottom:1px solid #ddd; padding-bottom:6px; }
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>🔥 The Monster Burger & Grill 🔥</h1>
+  <button id="btnCarrito" onclick="toggleCarrito()">Carrito 🛒</button>
   <div class="secciones">
     <button onclick="scrollToSection('Burgers')">BURGERS</button>
     <button onclick="scrollToSection('Salchis')">SALCHIS</button>
@@ -36,7 +44,6 @@ h2 { margin-top:20px; color:#8B0000; font-size:1.4rem; text-transform:uppercase;
     <button onclick="scrollToSection('AlaPlancha')">A LA PLANCHA</button>
   </div>
 </div>
-<button id="btnCarrito" onclick="toggleCarrito()">Carrito 🛒</button>
 
 <div class="menu">
 <h2 id="Burgers">BURGERS 🍔</h2>
@@ -100,8 +107,7 @@ function generarMenu(){
 
 function agregar(nombre,precio){
   let item = carrito.find(i=>i.nombre===nombre);
-  if(item){ item.cantidad++; }
-  else { carrito.push({nombre, cantidad:1, precio, observaciones:''}); }
+  if(item){ item.cantidad++; } else { carrito.push({nombre, cantidad:1, precio, observaciones:''}); }
   actualizarCantidad(nombre);
   actualizarCarrito();
 }
@@ -144,7 +150,10 @@ function actualizarCarrito(){
   document.getElementById('totalCarrito').innerText = `Total: S/${total}`;
 }
 
-function toggleCarrito(){ document.getElementById('carritoOverlay').style.display = document.getElementById('carritoOverlay').style.display==='block'?'none':'block'; }
+function toggleCarrito(){
+  const overlay = document.getElementById('carritoOverlay');
+  overlay.classList.toggle('show');
+}
 
 function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 
