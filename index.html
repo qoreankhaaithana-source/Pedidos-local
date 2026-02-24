@@ -3,34 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedidos Online</title>
+<title>The Monster Burger & Grill</title>
 <style>
 body{font-family:Arial,sans-serif;margin:0;background:#f4f4f6}
-.container{max-width:420px;margin:auto;padding:15px}
-h2{text-align:center;margin-bottom:10px}
-.nav-sections{text-align:center;margin-bottom:15px}
+header{position:sticky;top:0;background:#fff;padding:10px 15px;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:center}
+header h1{margin:0;font-size:20px;color:#7B2CBF}
+header h2{margin:2px 0 5px 0;font-size:16px;color:#333}
+.nav-sections{display:flex;justify-content:center;flex-wrap:wrap;margin-bottom:5px}
 .nav-sections button{margin:2px;padding:6px 12px;border:none;border-radius:10px;background:#7B2CBF;color:white;font-weight:bold;cursor:pointer;font-size:14px}
+.container{max-width:420px;margin:auto;padding:10px 15px}
+.section-title{font-weight:bold;font-size:18px;margin-bottom:5px;margin-top:10px;color:#222}
 .card{background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center}
 .add-btn{background:#eee;padding:5px 10px;font-size:14px;border-radius:10px;cursor:pointer;margin-left:10px}
-.cart{background:#fff;padding:10px;border-radius:12px;margin-top:15px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.cart-button{background:#2ecc71;padding:8px 12px;color:white;font-weight:bold;border:none;border-radius:12px;margin-left:5px;cursor:pointer}
+.cart-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20}
+.cart-content{background:#fff;width:90%;max-width:400px;border-radius:15px;padding:15px;max-height:80%;overflow-y:auto;position:relative}
+.cart-close{position:absolute;top:10px;right:10px;font-size:18px;font-weight:bold;background:none;border:none;cursor:pointer}
 .cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .cart-item span{margin-right:10px}
 button.btn-yape{width:100%;padding:12px;background:#2ecc71;color:#fff;border:none;border-radius:12px;font-weight:bold;margin-top:10px;cursor:pointer}
-.section-title{font-weight:bold;font-size:16px;margin-bottom:5px;margin-top:10px}
 input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 </style>
 </head>
 <body>
-<div class="container">
+
+<header>
+<h1>Bienvenidos a The Monster Burger & Grill</h1>
 <h2>Haz tu pedido</h2>
-
-<!-- Navegación rápida -->
 <div class="nav-sections">
-<button onclick="document.getElementById('burgers').scrollIntoView({behavior:'smooth'})">Burgers</button>
-<button onclick="document.getElementById('salchis').scrollIntoView({behavior:'smooth'})">Salchis</button>
-<button onclick="document.getElementById('broasters').scrollIntoView({behavior:'smooth'})">Broasters</button>
+<button onclick="scrollToSection('burgers')">Burgers</button>
+<button onclick="scrollToSection('salchis')">Salchis</button>
+<button onclick="scrollToSection('broasters')">Broasters</button>
+<button class="cart-button" onclick="abrirCarrito()">Carrito 🛒</button>
 </div>
+</header>
 
+<div class="container">
 <!-- Burgers -->
 <div id="burgers" class="section-title">🍔 Burgers</div>
 <div class="card"><span>Burger clásica S/10</span><button class="add-btn" onclick="agregar('Burger clásica',10)">+</button></div>
@@ -74,20 +82,37 @@ input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 </select>
 </div>
 
-<!-- Carrito -->
-<div class="cart">
+</div>
+
+<!-- Carrito Modal -->
+<div class="cart-modal" id="cartModal">
+<div class="cart-content">
+<button class="cart-close" onclick="cerrarCarrito()">✖</button>
 <h3>Carrito</h3>
 <div id="lista-carrito"></div>
 <div class="total">Total: S/ <span id="total">0</span></div>
 <button class="btn-yape" onclick="enviar()">Realizar pedido</button>
+<p style="text-align:center;margin-top:10px;">¡Gracias por elegirnos!</p>
+</div>
 </div>
 
 <script>
 let carrito=[];
 let total=0;
 
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function abrirCarrito(){
+  document.getElementById("cartModal").style.display="flex";
+}
+
+function cerrarCarrito(){
+  document.getElementById("cartModal").style.display="none";
+}
+
 function agregar(nombre,precio){
-  // Revisar si ya está en carrito
   let item=carrito.find(i=>i.nombre===nombre);
   if(item){item.cantidad++;item.subtotal+=precio;}
   else{carrito.push({nombre:nombre,cantidad:1,subtotal:precio,precio:precio});}
@@ -147,5 +172,6 @@ function enviar(){
   window.open("https://wa.me/51998391223?text="+mensaje,"_blank");
 }
 </script>
+
 </body>
-</html> 
+</html>
