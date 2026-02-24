@@ -10,12 +10,14 @@ body{font-family:Arial,sans-serif;margin:0;background:#f4f4f6}
 h2{text-align:center;margin-bottom:10px}
 .nav-sections{text-align:center;margin-bottom:15px}
 .nav-sections button{margin:2px;padding:6px 12px;border:none;border-radius:10px;background:#7B2CBF;color:white;font-weight:bold;cursor:pointer;font-size:14px}
-.card{background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
-button.add{background:#eee;padding:6px 10px;font-size:14px;margin-top:5px;border-radius:10px;cursor:pointer;width:auto}
+.card{background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center}
+.add-btn{background:#eee;padding:5px 10px;font-size:14px;border-radius:10px;cursor:pointer;margin-left:10px}
+.cart{background:#fff;padding:10px;border-radius:12px;margin-top:15px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.cart-item span{margin-right:10px}
 button.btn-yape{width:100%;padding:12px;background:#2ecc71;color:#fff;border:none;border-radius:12px;font-weight:bold;margin-top:10px;cursor:pointer}
-.total{font-size:16px;font-weight:bold;margin-top:8px}
-input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 .section-title{font-weight:bold;font-size:16px;margin-bottom:5px;margin-top:10px}
+input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -31,35 +33,35 @@ input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 
 <!-- Burgers -->
 <div id="burgers" class="section-title">🍔 Burgers</div>
-<div class="card"><b>Burger clásica</b> S/10 <button class="add" onclick="agregar('Burger clásica',10)">Agregar</button></div>
-<div class="card"><b>Burger cheese</b> S/13 <button class="add" onclick="agregar('Burger cheese',13)">Agregar</button></div>
-<div class="card"><b>Burger royal</b> S/13 <button class="add" onclick="agregar('Burger royal',13)">Agregar</button></div>
-<div class="card"><b>Burger chicken</b> S/14 <button class="add" onclick="agregar('Burger chicken',14)">Agregar</button></div>
-<div class="card"><b>Burger hawaiana</b> S/14 <button class="add" onclick="agregar('Burger hawaiana',14)">Agregar</button></div>
-<div class="card"><b>Burger a los misio</b> S/15 <button class="add" onclick="agregar('Burger a los misio',15)">Agregar</button></div>
-<div class="card"><b>Burger baconator</b> S/16 <button class="add" onclick="agregar('Burger baconator',16)">Agregar</button></div>
-<div class="card"><b>Two Burger</b> S/17 <button class="add" onclick="agregar('Two Burger',17)">Agregar</button></div>
-<div class="card"><b>Burger Monster</b> S/20 <button class="add" onclick="agregar('Burger Monster',20)">Agregar</button></div>
+<div class="card"><span>Burger clásica S/10</span><button class="add-btn" onclick="agregar('Burger clásica',10)">+</button></div>
+<div class="card"><span>Burger cheese S/13</span><button class="add-btn" onclick="agregar('Burger cheese',13)">+</button></div>
+<div class="card"><span>Burger royal S/13</span><button class="add-btn" onclick="agregar('Burger royal',13)">+</button></div>
+<div class="card"><span>Burger chicken S/14</span><button class="add-btn" onclick="agregar('Burger chicken',14)">+</button></div>
+<div class="card"><span>Burger hawaiana S/14</span><button class="add-btn" onclick="agregar('Burger hawaiana',14)">+</button></div>
+<div class="card"><span>Burger a los misio S/15</span><button class="add-btn" onclick="agregar('Burger a los misio',15)">+</button></div>
+<div class="card"><span>Burger baconator S/16</span><button class="add-btn" onclick="agregar('Burger baconator',16)">+</button></div>
+<div class="card"><span>Two Burger S/17</span><button class="add-btn" onclick="agregar('Two Burger',17)">+</button></div>
+<div class="card"><span>Burger Monster S/20</span><button class="add-btn" onclick="agregar('Burger Monster',20)">+</button></div>
 
 <!-- Salchis -->
 <div id="salchis" class="section-title">🌭 Salchis</div>
-<div class="card"><b>Salchi clásica</b> S/10 <button class="add" onclick="agregar('Salchi clásica',10)">Agregar</button></div>
-<div class="card"><b>Choripapa</b> S/12 <button class="add" onclick="agregar('Choripapa',12)">Agregar</button></div>
-<div class="card"><b>Salchi Royal</b> S/14 <button class="add" onclick="agregar('Salchi Royal',14)">Agregar</button></div>
-<div class="card"><b>Salchipollo</b> S/15 <button class="add" onclick="agregar('Salchipollo',15)">Agregar</button></div>
-<div class="card"><b>Salchi nuggets</b> S/15 <button class="add" onclick="agregar('Salchi nuggets',15)">Agregar</button></div>
-<div class="card"><b>Salchi a lo misio</b> S/16 <button class="add" onclick="agregar('Salchi a lo misio',16)">Agregar</button></div>
-<div class="card"><b>Salchi Monster</b> S/18 <button class="add" onclick="agregar('Salchi Monster',18)">Agregar</button></div>
+<div class="card"><span>Salchi clásica S/10</span><button class="add-btn" onclick="agregar('Salchi clásica',10)">+</button></div>
+<div class="card"><span>Choripapa S/12</span><button class="add-btn" onclick="agregar('Choripapa',12)">+</button></div>
+<div class="card"><span>Salchi Royal S/14</span><button class="add-btn" onclick="agregar('Salchi Royal',14)">+</button></div>
+<div class="card"><span>Salchipollo S/15</span><button class="add-btn" onclick="agregar('Salchipollo',15)">+</button></div>
+<div class="card"><span>Salchi nuggets S/15</span><button class="add-btn" onclick="agregar('Salchi nuggets',15)">+</button></div>
+<div class="card"><span>Salchi a lo misio S/16</span><button class="add-btn" onclick="agregar('Salchi a lo misio',16)">+</button></div>
+<div class="card"><span>Salchi Monster S/18</span><button class="add-btn" onclick="agregar('Salchi Monster',18)">+</button></div>
 
 <!-- Broasters -->
 <div id="broasters" class="section-title">🍗 Broasters</div>
-<div class="card"><b>Alita</b> S/11 <button class="add" onclick="agregar('Alita',11)">Agregar</button></div>
-<div class="card"><b>Pierna</b> S/12 <button class="add" onclick="agregar('Pierna',12)">Agregar</button></div>
-<div class="card"><b>Encuentro</b> S/12 <button class="add" onclick="agregar('Encuentro',12)">Agregar</button></div>
-<div class="card"><b>Pecho</b> S/14 <button class="add" onclick="agregar('Pecho',14)">Agregar</button></div>
-<div class="card"><b>Chicharrón de pollo</b> S/13 <button class="add" onclick="agregar('Chicharrón de pollo',13)">Agregar</button></div>
-<div class="card"><b>Pierna completa</b> S/18 <button class="add" onclick="agregar('Pierna completa',18)">Agregar</button></div>
-<div class="card"><b>Pecho completo</b> S/20 <button class="add" onclick="agregar('Pecho completo',20)">Agregar</button></div>
+<div class="card"><span>Alita S/11</span><button class="add-btn" onclick="agregar('Alita',11)">+</button></div>
+<div class="card"><span>Pierna S/12</span><button class="add-btn" onclick="agregar('Pierna',12)">+</button></div>
+<div class="card"><span>Encuentro S/12</span><button class="add-btn" onclick="agregar('Encuentro',12)">+</button></div>
+<div class="card"><span>Pecho S/14</span><button class="add-btn" onclick="agregar('Pecho',14)">+</button></div>
+<div class="card"><span>Chicharrón de pollo S/13</span><button class="add-btn" onclick="agregar('Chicharrón de pollo',13)">+</button></div>
+<div class="card"><span>Pierna completa S/18</span><button class="add-btn" onclick="agregar('Pierna completa',18)">+</button></div>
+<div class="card"><span>Pecho completo S/20</span><button class="add-btn" onclick="agregar('Pecho completo',20)">+</button></div>
 
 <!-- Observaciones y modalidad -->
 <div class="card">
@@ -70,26 +72,74 @@ input, select{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
 <option>Para llevar</option>
 <option>Comer en local</option>
 </select>
-<div class="total">Total: S/ <span id="total">0</span></div>
-<button class="btn-yape" onclick="enviar()">Realizar pedido</button>
 </div>
 
+<!-- Carrito -->
+<div class="cart">
+<h3>Carrito</h3>
+<div id="lista-carrito"></div>
+<div class="total">Total: S/ <span id="total">0</span></div>
+<button class="btn-yape" onclick="enviar()">Realizar pedido</button>
 </div>
 
 <script>
 let carrito=[];
 let total=0;
+
 function agregar(nombre,precio){
-  carrito.push(nombre);
-  total+=precio;
+  // Revisar si ya está en carrito
+  let item=carrito.find(i=>i.nombre===nombre);
+  if(item){item.cantidad++;item.subtotal+=precio;}
+  else{carrito.push({nombre:nombre,cantidad:1,subtotal:precio,precio:precio});}
+  actualizarCarrito();
+}
+
+function eliminar(nombre){
+  carrito=carrito.filter(i=>i.nombre!==nombre);
+  actualizarCarrito();
+}
+
+function sumar(nombre){
+  let item=carrito.find(i=>i.nombre===nombre);
+  if(item){item.cantidad++;item.subtotal+=item.precio;}
+  actualizarCarrito();
+}
+
+function restar(nombre){
+  let item=carrito.find(i=>i.nombre===nombre);
+  if(item){
+    item.cantidad--;
+    item.subtotal-=item.precio;
+    if(item.cantidad<=0) eliminar(nombre);
+  }
+  actualizarCarrito();
+}
+
+function actualizarCarrito(){
+  let lista=document.getElementById("lista-carrito");
+  lista.innerHTML="";
+  total=0;
+  carrito.forEach(i=>{
+    total+=i.subtotal;
+    let div=document.createElement("div");
+    div.className="cart-item";
+    div.innerHTML=`<span>${i.nombre} x${i.cantidad} S/${i.subtotal}</span>
+    <span>
+      <button onclick="restar('${i.nombre}')">-</button>
+      <button onclick="sumar('${i.nombre}')">+</button>
+      <button onclick="eliminar('${i.nombre}')">🗑</button>
+    </span>`;
+    lista.appendChild(div);
+  });
   document.getElementById("total").innerText=total;
 }
+
 function enviar(){
   if(total===0){alert("Agrega al menos un producto"); return;}
   let obs=document.getElementById("obs").value;
   let modo=document.getElementById("modo").value;
   let mensaje="*NUEVO PEDIDO*%0A%0A";
-  carrito.forEach(p=>mensaje+=p+"%0A");
+  carrito.forEach(i=>mensaje+=i.nombre+" x"+i.cantidad+" S/"+i.subtotal+"%0A");
   mensaje+="%0AModalidad: "+modo;
   mensaje+="%0AObservaciones: "+obs;
   mensaje+="%0ATotal: S/ "+total;
@@ -98,4 +148,4 @@ function enviar(){
 }
 </script>
 </body>
-</html>
+</html> 
